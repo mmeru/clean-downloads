@@ -2,20 +2,20 @@ import os
 import shutil
 
 # Set the source and destination folders
-downloads_folder = os.path.expanduser(r"c:\Users\mmeru\Downloads")  # Path to Downloads folder
-pictures_folder = os.path.expanduser(r"c:\Users\mmeru\Pictures")    # Path to Pictures folder
-music_folder = os.path.expanduser(r"c:\Users\mmeru\Music")          # Path to Music folder
-videos_folder = os.path.expanduser(r"c:\Users\mmeru\Videos")        # Path to Videos folder
-documents_folder = os.path.expanduser(r"c:\Users\mmeru\Documents")  # Path to Documents folder
+downloads_folder = os.path.expanduser("~/Downloads")  # Path to Downloads folder
+pictures_folder = os.path.expanduser("~/Pictures")    # Path to Pictures folder
+music_folder = os.path.expanduser("~/Music")          # Path to Music folder
+videos_folder = os.path.expanduser("~/Videos")        # Path to Videos folder
+documents_folder = os.path.expanduser("~/Documents")  # Path to Documents folder
 
 # Ensure the destination folders exist
 for folder in [pictures_folder, music_folder, videos_folder, documents_folder]:
     if not os.path.exists(folder):
         os.makedirs(folder)
 
-# List of common image, sound, video, and document file extensions
+# List of common image, music, video, and document file extensions
 image_extensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff']
-sound_extensions = ['.mp3', '.wav', '.flac', '.ogg', '.m4a']
+music_extensions = ['.mp3', '.wav', '.flac', '.ogg', '.m4a']
 video_extensions = ['.mp4', '.avi', '.mkv', '.mov', '.wmv', '.m4v', '.webm']
 document_extensions = ['.txt', '.pdf', '.docx', '.xlsx', '.pptx', '.csv']
 
@@ -44,8 +44,8 @@ for filename in os.listdir(downloads_folder):
     if any(filename.lower().endswith(ext) for ext in image_extensions):
         move_file(source_path, pictures_folder)
 
-    # Check if the file is a sound file
-    elif any(filename.lower().endswith(ext) for ext in sound_extensions):
+    # Check if the file is a music file
+    elif any(filename.lower().endswith(ext) for ext in music_extensions):
         move_file(source_path, music_folder)
 
     # Check if the file is a video file
@@ -56,4 +56,4 @@ for filename in os.listdir(downloads_folder):
     elif any(filename.lower().endswith(ext) for ext in document_extensions):
         move_file(source_path, documents_folder)
 
-print("All image, sound, video, and document files have been moved to their respective folders.")
+print("All image, music, video, and document files have been moved to their respective folders.")
